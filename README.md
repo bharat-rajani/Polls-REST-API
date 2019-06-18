@@ -56,3 +56,6 @@ User polls for gathering live responses on various topic.
  	```
  
  	Any new user who signs up to the app is assigned the `ROLE_USER` by default.
+
+
+Special Thanks to callicoder for the tutorials.

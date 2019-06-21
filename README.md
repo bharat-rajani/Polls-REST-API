@@ -14,8 +14,7 @@ User polls for gathering live responses on various topic.
  1. **Clone the application**
  
  	```bash
- 	git clone https://github.com/callicoder/spring-security-react-ant-design-polls-app.git
- 	cd polling-app-server
+ 	git clone https://github.com/bharat-rajani/Polls-REST-API.git
  	```
  
  2. **Create MySQL database**

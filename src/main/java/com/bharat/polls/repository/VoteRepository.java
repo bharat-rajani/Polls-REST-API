@@ -1,0 +1,36 @@
+package com.bharat.polls.repository;
+
+import com.bharat.polls.model.ChoiceVoteCount;
+import com.bharat.polls.model.Vote;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface VoteRepository extends JpaRepository<Vote,Long> {
+// what do we need?
+// find a vote by poll id and user id
+// count the votes for each choice for a given poll ids
+// count the votes for each choice for given set of poll ids
+// count total votes given by a user
+// find all the votes given by a user id (paginated)
+    @Query("SELECT NEW com.bharat.polls.model.ChoiceVoteCount(v.choice.id,count(v.id)) FROM Vote v WHERE v.poll.id in :pollIds GROUP BY v.choice.id")
+    List<ChoiceVoteCount> countByPollIdInGroupByChoiceId(@Param("pollIds") List<Long> pollIds);
+
+    @Query("SELECT NEW com.bharat.polls.model.ChoiceVoteCount(v.choice.id,count(v.id)) FROM Vote v WHERE v.poll.id = :pollId GROUP BY v.choice.id")
+    List<ChoiceVoteCount> countByPollIdgroupByChoiceId(@Param("pollId") Long pollId);
+
+    @Query("SELECT v FROM Vote v WHERE v.user.id = :userId and v.poll.id = :pollId")
+    Vote findByUserIdAndPollId(@Param("userId") Long userId, @Param("pollId") Long pollId);
+
+    @Query("SELECT count(v.id) FROM Vote v WHERE v.user.id = :userId")
+    Long countByUserId(@Param("userId") Long userId);
+
+    @Query("SELECT v.poll.id FROM Vote v WHERE v.user.id = :userId")
+    Page<Long> findVotedPollIdsByUserId(@Param("userId") Long userId, Pageable pageable);
+}

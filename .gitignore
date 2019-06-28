@@ -32,9 +32,9 @@ HELP.md
 
 
 # Package Files #
-*.jar
-*.war
-*.ear
+# *.jar
+# *.war
+# *.ear
 
 application-dev.properties
 

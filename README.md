@@ -14,8 +14,7 @@ User polls for gathering live responses on various topic.
  1. **Clone the application**
  
  	```bash
- 	git clone https://github.com/callicoder/spring-security-react-ant-design-polls-app.git
- 	cd polling-app-server
+ 	git clone https://github.com/bharat-rajani/Polls-REST-API.git
  	```
  
  2. **Create MySQL database**
@@ -56,3 +55,6 @@ User polls for gathering live responses on various topic.
  	```
  
  	Any new user who signs up to the app is assigned the `ROLE_USER` by default.
+
+
+Special Thanks to callicoder for the tutorials.

@@ -7,6 +7,7 @@ import com.bharat.polls.repository.UserRepository;
 import com.bharat.polls.repository.VoteRepository;
 import com.bharat.polls.security.CurrentUser;
 import com.bharat.polls.security.UserPrincipal;
+import com.bharat.polls.service.PollService;
 import com.bharat.polls.util.AppConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

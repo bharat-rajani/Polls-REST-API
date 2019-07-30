@@ -78,7 +78,15 @@ public class AuthController {
 
         User result = userRepository.save(user);
 
-        URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/{username}")
+        /* <p> URIComponent builder
+            It helps to create UriComponent instances by providing fine-grained control over all the aspects of preparing
+            a URI including construction, expansion from template variables and encoding.
+
+            Here I am using it to construct a URIComponent instance to perform a redirection to that instance.
+
+            In a single line -> It is used to redirect user to his/her profile page after the login is successful.
+        * */
+        URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/users/{username}")
                 .buildAndExpand(result.getUsername()).toUri();
 
         return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
